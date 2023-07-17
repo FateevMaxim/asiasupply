@@ -65,7 +65,7 @@
         @foreach ($categoriesDenair as $categoryD)
             <li class="one_third">
                 <div class="product">
-                    <a href="/boerger/{{ $categoryD->id }}" class="link-dark">
+                    <a href="/denair/{{ $categoryD->id }}" class="link-dark">
                         <div class="imgbox"><img src="{{ asset('storage/'.$categoryD->avatar) }}" alt="{{ $categoryD->title }}"></div>
                         <div class="specifies">
                             <h2 class="heading">{{ $categoryD->title }}</h2>
