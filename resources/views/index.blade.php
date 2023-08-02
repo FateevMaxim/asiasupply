@@ -29,18 +29,18 @@
     <!-- ################################################################################################ -->
     <div class="sectiontitle">
       <h6 class="heading">Продукция Börger</h6>
-      <p>Категории предоставляемой продукции в Казахстане</p>
+      <p>Категории предоставляемой продукции</p>
     </div>
     <ul class="nospace group overview">
 
-        @foreach ($categories as $category)
+        @foreach ($categoriesB as $categoryB)
                 <li class="one_third">
                     <div class="product">
-                        <a href="/boerger/{{ $category->id }}" class="link-dark">
-                            <div class="imgbox"><img src="{{ asset('storage/'.$category->avatar) }}" alt="{{ $category->title }}"></div>
+                        <a href="/boerger/{{ $categoryB->id }}" class="link-dark">
+                            <div class="imgbox"><img src="{{ asset('storage/'.$categoryB->avatar) }}" alt="{{ $categoryB->title }}"></div>
                             <div class="specifies">
-                                <h2 class="heading">{{ $category->title }}</h2>
-                            <span>{!! $category->description !!}</span>
+                                <h2 class="heading">{{ $categoryB->title }}</h2>
+                            <span>{!! $categoryB->description !!}</span>
                             </div>
                         </a>
                     </div>
@@ -59,7 +59,7 @@
     <!-- ################################################################################################ -->
     <div class="sectiontitle">
       <h6 class="heading">Продукция Denair</h6>
-      <p>Категории предоставляемой продукции в Казахстане</p>
+      <p>Категории предоставляемой продукции</p>
     </div>
     <ul class="nospace group overview">
         @foreach ($categoriesDenair as $categoryD)
@@ -83,6 +83,34 @@
     <!-- / main body -->
     <div class="clear"></div>
   </main>
+
+    <main class="hoc container clear">
+        <!-- main body -->
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Предоставляемая продукция</h6>
+        </div>
+        <ul class="nospace group overview">
+
+            @foreach ($categories as $category)
+                <li class="one_third">
+                    <div class="product">
+                        <a href="/product/{{ $category->id }}" class="link-dark">
+                            <div class="imgbox"><img src="{{ asset('storage/'.$category->avatar) }}" alt="{{ $category->title }}"></div>
+                            <div class="specifies">
+                                <h2 class="heading">{{ $category->title }}</h2>
+                                <span>{!! $category->description !!}</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+
+        <!-- ################################################################################################ -->
+        <!-- / main body -->
+        <div class="clear"></div>
+    </main>
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -135,61 +163,36 @@
       <p>Обзоры и инструкции новейшего оборудования</p>
     </div>
     <ul class="nospace group">
-      <li class="one_third first">
-        <article>
-          <figure><a href="#"><img src="images/demo/348x261.png" alt=""></a>
-            <figcaption>
-              <time datetime="2045-04-06T08:15+00:00"><strong>06</strong> <em>Апр.</em></time>
-            </figcaption>
-          </figure>
-          <div class="excerpt">
-            <h6 class="heading">Насос для THW</h6>
-            <ul class="nospace meta">
-              <li><i class="fas fa-tags"></i> <a href="#">Насосы</a>, <a href="#">Börger</a></li>
-            </ul>
-            <p>Уже много лет Общественная Организация по борьбе с резвучайными ситуациями (нем. THW - Technisches Hilfswerk) применяет высокопроизводительные насосы фирмы Börger.</p>
-            <footer><a class="btn" href="#">Подробнее</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_third">
-        <article>
-          <figure><a href="#"><img src="images/demo/348x261-1.png" alt=""></a>
-            <figcaption>
-              <time datetime="2045-04-05T08:15+00:00"><strong>05</strong> <em>Апр.</em></time>
-            </figcaption>
-          </figure>
-          <div class="excerpt">
-            <h6 class="heading">Измельчитель Multicrusher</h6>
-            <ul class="nospace meta">
-              <li><i class="fas fa-tags"></i> <a href="#">Измельчители</a>, <a href="#">Börger</a></li>
-            </ul>
-            <p>Конструкция двухвальных измельчителей во многом схожа с проверенными роторно-лопастными насосами фирмы Börger. </p>
-            <footer><a class="btn" href="#">Подробнее</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_third">
-        <article>
-          <figure><a href="#"><img src="images/demo/348x261-2.png" alt=""></a>
-            <figcaption>
-              <time datetime="2045-04-04T08:15+00:00"><strong>04</strong> <em>Апр.</em></time>
-            </figcaption>
-          </figure>
-          <div class="excerpt">
-            <h6 class="heading">Ёмкости из нержавеющей стали</h6>
-            <ul class="nospace meta">
-              <li><i class="fas fa-tags"></i> <a href="#">Ёмкости</a>, <a href="#">Börger</a></li>
-            </ul>
-            <p>Объем резервуаров может составлять от 30 до 5.000 м³. Дополнительно мы можем предложить различное оборудование и разнообразные конструкции крыш резервуаров</p>
-            <footer><a class="btn" href="#">Подробнее</a></footer>
-          </div>
-        </article>
-      </li>
+        @foreach($articles as $article)
+          <li class="one_third first">
+            <article>
+                    <figure><a href="#"><img src="{{asset('storage/'.$article->avatar)}}" alt="{{$article->title}}"></a>
+                        <figcaption>
+                            <time datetime="{{$article->created_at}}"><strong>{{ \Carbon\Carbon::parse($article->created_at)->format('d') }}</strong> <em>{{ \Carbon\Carbon::parse($article->created_at)->locale('ru')->translatedFormat('M') }}</em></time>
+                        </figcaption>
+                    </figure>
+                    <div class="excerpt">
+                        <h6 class="heading">{{$article->title}}</h6>
+                        <ul class="nospace meta">
+                            @foreach(json_decode($article->tags, true) as $tag)
+                                <li><i class="fas fa-tags"></i>
+                                    <a href="#">{{$tag}}</a>
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+                        <p>{{ $article->intro }}</p>
+                        <footer><a class="btn" href="{{ route('article', ['id' => $article->id]) }}">Подробнее</a></footer>
+                    </div>
+            </article>
+          </li>
+        @endforeach
     </ul>
     <!-- ################################################################################################ -->
   </section>
 </div>
+
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->

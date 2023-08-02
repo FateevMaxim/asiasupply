@@ -613,3 +613,8 @@ table a, #comments a{background-color:inherit;}
 
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
+.card {
+    border: 0px !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+    border-radius: 5px;
+}

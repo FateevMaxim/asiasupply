@@ -37,7 +37,26 @@
   </div>
   <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
   <!-- JAVASCRIPTS -->
-  <script src="{{ 'js/jquery.min.js' }}"></script>
-  <script src="{{ 'js/jquery.backtotop.js' }}"></script>
-  <script src="{{ 'js/jquery.mobilemenu.js' }}"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{  asset('js/jquery.backtotop.js') }}"></script>
+
+  <script src="{{  asset('js/jquery.mobilemenu.js') }}"></script>
+@if(!Route::is('home'))
+    <script src="{{  asset('js/img-previewer.min.js') }}"></script>
+    <script>
+        const a = new ImgPreviewer('body', {
+            scrollbar: true
+        })
+        function add() {
+            let img = document.createElement('img')
+            img.src = `https://picsum.photos/500/500?random=${Math.random()}`
+            img.onload = function () {
+                document.getElementById('app').appendChild(img)
+                a.update()
+            }
+        }
+        document.getElementById('add').onclick = add
+    </script>
+@endif
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

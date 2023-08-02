@@ -10,7 +10,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>Продукция компании Börger</title>
+<title>Продукция компании Denair</title>
 @include('components.meta')
 </head>
 <body id="top">
@@ -43,7 +43,7 @@ Licence URI: https://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <div class="sidebar one_quarter first">
       <!-- ################################################################################################ -->
-      <h5>Продукция Börger</h5>
+      <h5>Продукция Denair</h5>
 
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -67,32 +67,6 @@ Licence URI: https://www.os-templates.com/template-terms
               </ul>
         </div>
       </div>
-      <div class="sdb_holder">
-        <h6>Lorem ipsum dolor</h6>
-        <address>
-        Full Name<br>
-        Address Line 1<br>
-        Address Line 2<br>
-        Town/City<br>
-        Postcode/Zip<br>
-        <br>
-        Tel: xxxx xxxx xxxxxx<br>
-        Email: <a href="#">contact@domain.com</a>
-        </address>
-      </div>
-      <div class="sdb_holder">
-        <article>
-          <h6>Lorem ipsum dolor</h6>
-          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed.</p>
-          <ul>
-            <li><a href="#">Lorem ipsum dolor sit</a></li>
-            <li>Etiam vel sapien et</li>
-            <li><a href="#">Etiam vel sapien et</a></li>
-          </ul>
-          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed. Condimentumsantincidunt dui mattis magna intesque purus orci augue lor nibh.</p>
-          <p class="more"><a href="#">Continue Reading &raquo;</a></p>
-        </article>
-      </div>
       <!-- ################################################################################################ -->
     </div>
     <!-- ################################################################################################ -->
@@ -101,7 +75,7 @@ Licence URI: https://www.os-templates.com/template-terms
       <!-- ################################################################################################ -->
       <h1>{{ $product->title }}</h1>
 
-      <p>{!! $product->intro !!}</p>
+      <p><img class="" style="width: 300px !important; float: left;" src="{{ asset('storage/'.$product->avatar) }}" alt="{{ $product->title }}">{!! $product->intro !!}</p>
 
       @foreach ($product->description as $desc)
 
@@ -109,10 +83,11 @@ Licence URI: https://www.os-templates.com/template-terms
         {!! $desc["desc_description"] !!}
         <br />
       @endforeach
-
-     @foreach ($product->media as $media)
-        <img class="img-thumbnail m-1" src="{{ asset('storage/'.$media) }}" alt="{{ $product->title }}">
-     @endforeach
+        <div id="app">
+            @foreach ($product->media as $media)
+                <img class="img-thumbnail m-1" height="250" src="{{ asset('storage/'.$media) }}" alt="{{ $product->title }}">
+            @endforeach
+        </div>
     </div>
       <!-- ################################################################################################ -->
     </div>
